@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { ArrowRight, Github, Linkedin, Youtube, Mail, Phone, Download, ExternalLink } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Youtube, Mail, Phone, Download, ExternalLink, Zap, Code2, Brain, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -39,12 +39,12 @@ const Index = () => {
   };
 
   const skills = [
-    { name: "Data Science & Analytics", level: 95 },
-    { name: "Machine Learning & AI", level: 90 },
-    { name: "Python Programming", level: 92 },
-    { name: "Java Programming", level: 85 },
-    { name: "Cybersecurity", level: 80 },
-    { name: "Data Visualization", level: 88 }
+    { name: "Data Science & Analytics", level: 95, icon: "📊", color: "from-cyan-400 to-blue-500" },
+    { name: "Machine Learning & AI", level: 90, icon: "🤖", color: "from-purple-400 to-pink-500" },
+    { name: "Python Programming", level: 92, icon: "🐍", color: "from-green-400 to-emerald-500" },
+    { name: "Java Programming", level: 85, icon: "☕", color: "from-orange-400 to-red-500" },
+    { name: "Cybersecurity", level: 80, icon: "🛡️", color: "from-red-400 to-rose-500" },
+    { name: "Data Visualization", level: 88, icon: "📈", color: "from-yellow-400 to-orange-500" }
   ];
 
   const certifications = [
@@ -52,25 +52,29 @@ const Index = () => {
       title: "Python for Data Science",
       issuer: "IIT Madras",
       achievement: "Silver Medal (88.8%)",
-      color: "bg-yellow-500"
+      gradient: "from-yellow-400 to-orange-500",
+      icon: "🏅"
     },
     {
       title: "Introduction to Generative AI",
       issuer: "IBM",
       achievement: "Certified",
-      color: "bg-blue-500"
+      gradient: "from-blue-400 to-blue-600",
+      icon: "🤖"
     },
     {
       title: "Cybersecurity Essentials",
       issuer: "IBM",
       achievement: "Certified",
-      color: "bg-blue-500"
+      gradient: "from-red-400 to-red-600",
+      icon: "🔒"
     },
     {
       title: "AI For Everyone",
       issuer: "DeepLearning.AI",
       achievement: "Certified",
-      color: "bg-green-500"
+      gradient: "from-green-400 to-green-600",
+      icon: "🧠"
     }
   ];
 
@@ -79,47 +83,62 @@ const Index = () => {
       title: "1st Place",
       event: "District Level Youth Festival",
       category: "Dance",
-      icon: "🏆"
+      icon: "🏆",
+      gradient: "from-yellow-400 to-orange-500"
     },
     {
       title: "2nd Prize",
       event: "District Level Yuva Utsav",
       category: "Dance",
-      icon: "🥈"
+      icon: "🥈",
+      gradient: "from-gray-300 to-gray-500"
     },
     {
       title: "Winner",
       event: "QIS Fest 2025",
       category: "Dance",
-      icon: "🏆"
+      icon: "🏆",
+      gradient: "from-purple-400 to-pink-500"
     },
     {
       title: "Runner-up",
       event: "Aditya Colours",
       category: "Dance",
-      icon: "🥉"
+      icon: "🥉",
+      gradient: "from-amber-400 to-yellow-500"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-10 left-10 w-20 h-20 bg-cyan-400/20 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute top-32 right-20 w-32 h-32 bg-purple-400/20 rounded-full blur-xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-32 left-1/4 w-24 h-24 bg-pink-400/20 rounded-full blur-xl animate-pulse delay-2000"></div>
+        <div className="absolute bottom-10 right-10 w-28 h-28 bg-yellow-400/20 rounded-full blur-xl animate-pulse delay-500"></div>
+      </div>
+
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-slate-900/95 backdrop-blur-sm z-50 border-b border-slate-800">
+      <nav className="fixed top-0 w-full bg-slate-900/90 backdrop-blur-lg z-50 border-b border-purple-500/30">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-xl font-bold text-yellow-400">Bharath Chilaka</div>
+            <div className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              Bharath Chilaka
+            </div>
             <div className="hidden md:flex space-x-8">
               {["Home", "About", "Skills", "Projects", "Achievements", "Contact"].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`text-sm font-medium transition-all duration-300 relative group ${
                     activeSection === item.toLowerCase()
-                      ? "text-yellow-400"
+                      ? "text-cyan-400"
                       : "text-gray-300 hover:text-white"
                   }`}
                 >
                   {item}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
                 </button>
               ))}
             </div>
@@ -128,33 +147,39 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="pt-20 pb-12 px-6">
+      <section id="home" className="pt-20 pb-12 px-6 relative">
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
             <div className="space-y-8">
               <div className="space-y-4">
-                <div className="text-yellow-400 font-medium">— Introduction</div>
+                <div className="text-cyan-400 font-medium animate-pulse flex items-center gap-2">
+                  <Sparkles className="w-4 h-4" />
+                  — Introduction
+                </div>
                 <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
                   Creative
                   <br />
-                  <span className="text-yellow-400">Technologist.</span>
+                  <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
+                    Technologist.
+                  </span>
                 </h1>
-                <div className="w-16 h-1 bg-yellow-400"></div>
+                <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 animate-pulse"></div>
               </div>
               
               <div className="space-y-4">
-                <p className="text-xl text-gray-300">
+                <p className="text-xl bg-gradient-to-r from-cyan-200 to-purple-200 bg-clip-text text-transparent">
                   Data Science Enthusiast | AI Innovator | NSS Volunteer
                 </p>
-                <p className="text-gray-400 max-w-lg">
+                <p className="text-gray-300 max-w-lg">
                   Computer Science student at RGUKT IIIT Ongole with IIT Madras Data Science certification. 
                   Passionate about AI, machine learning, and creating solutions that make a difference.
                 </p>
                 
                 <Button 
                   onClick={() => scrollToSection("about")}
-                  className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium px-6 py-3 rounded-none group"
+                  className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium px-6 py-3 rounded-lg group transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50"
                 >
+                  <Brain className="mr-2 h-4 w-4" />
                   My story
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -162,15 +187,15 @@ const Index = () => {
 
               <div className="flex space-x-4 pt-4">
                 <a href="https://github.com/Bobby-111" target="_blank" rel="noopener noreferrer" 
-                   className="text-gray-400 hover:text-yellow-400 transition-colors">
+                   className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/50 p-2 rounded-lg">
                   <Github className="h-6 w-6" />
                 </a>
                 <a href="https://linkedin.com/in/bharath-chilaka" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-yellow-400 transition-colors">
+                   className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-400/50 p-2 rounded-lg">
                   <Linkedin className="h-6 w-6" />
                 </a>
                 <a href="https://youtube.com/@bharath.chilaka01" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-yellow-400 transition-colors">
+                   className="text-gray-400 hover:text-red-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-red-400/50 p-2 rounded-lg">
                   <Youtube className="h-6 w-6" />
                 </a>
               </div>
@@ -178,13 +203,17 @@ const Index = () => {
 
             <div className="lg:justify-self-end">
               <div className="relative">
-                <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 p-1">
-                  <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-6xl">
-                    👨‍💻
+                <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 p-1 animate-spin-slow">
+                  <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-6xl relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-purple-500/20 animate-pulse"></div>
+                    <span className="relative z-10">👨‍💻</span>
                   </div>
                 </div>
-                <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-500 rounded-lg flex items-center justify-center text-2xl animate-bounce">
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center text-2xl animate-bounce shadow-lg shadow-yellow-400/50">
                   🎓
+                </div>
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center text-xl animate-pulse shadow-lg shadow-green-400/50">
+                  <Code2 className="w-8 h-8" />
                 </div>
               </div>
             </div>
@@ -193,11 +222,12 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-slate-800/50">
-        <div className="container mx-auto">
+      <section id="about" className="py-20 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-cyan-900/20"></div>
+        <div className="container mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-4xl font-bold mb-6">About Me</h2>
+              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">About Me</h2>
               <div className="space-y-4 text-gray-300">
                 <p>
                   I'm a passionate Computer Science student at RGUKT IIIT Ongole with an outstanding academic record (GPA: 9.7). 
@@ -218,17 +248,17 @@ const Index = () => {
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold mb-4 text-yellow-400">Education</h3>
+                <h3 className="text-xl font-semibold mb-4 text-cyan-400">Education</h3>
                 <div className="space-y-4">
-                  <div className="border-l-2 border-yellow-400 pl-4">
+                  <div className="border-l-2 border-cyan-400 pl-4 bg-gradient-to-r from-cyan-400/10 to-transparent p-3 rounded-r-lg">
                     <h4 className="font-medium">B.Tech Computer Science & Engineering</h4>
                     <p className="text-gray-400">RGUKT IIIT Ongole • Expected 2027 • GPA: 9.7</p>
                   </div>
-                  <div className="border-l-2 border-blue-500 pl-4">
+                  <div className="border-l-2 border-purple-400 pl-4 bg-gradient-to-r from-purple-400/10 to-transparent p-3 rounded-r-lg">
                     <h4 className="font-medium">Pre-University Course</h4>
                     <p className="text-gray-400">RGUKT IIIT Ongole • 2023 • GPA: 9.32</p>
                   </div>
-                  <div className="border-l-2 border-green-500 pl-4">
+                  <div className="border-l-2 border-green-400 pl-4 bg-gradient-to-r from-green-400/10 to-transparent p-3 rounded-r-lg">
                     <h4 className="font-medium">Matriculation</h4>
                     <p className="text-gray-400">Montessori EM School • 2021 • GPA: 10.0</p>
                   </div>
@@ -236,19 +266,19 @@ const Index = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4 pt-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-400">3+</div>
+                <div className="text-center p-4 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-lg border border-cyan-400/30">
+                  <div className="text-3xl font-bold text-cyan-400">3+</div>
                   <div className="text-sm text-gray-400">Years of Experience</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-400">8+</div>
+                <div className="text-center p-4 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg border border-purple-400/30">
+                  <div className="text-3xl font-bold text-purple-400">8+</div>
                   <div className="text-sm text-gray-400">Certifications</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-yellow-400">4+</div>
+                <div className="text-center p-4 bg-gradient-to-br from-pink-500/20 to-orange-500/20 rounded-lg border border-pink-400/30">
+                  <div className="text-3xl font-bold text-pink-400">4+</div>
                   <div className="text-sm text-gray-400">Dance Awards</div>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-lg border border-yellow-400/30">
                   <div className="text-3xl font-bold text-yellow-400">88.8%</div>
                   <div className="text-sm text-gray-400">IIT Madras Score</div>
                 </div>
@@ -261,21 +291,27 @@ const Index = () => {
       {/* Skills Section */}
       <section id="skills" className="py-20 px-6">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center">Skills & Certifications</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Skills & Certifications</h2>
           
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-2xl font-semibold mb-8 text-yellow-400">Technical Skills</h3>
+              <h3 className="text-2xl font-semibold mb-8 text-cyan-400 flex items-center gap-2">
+                <Zap className="w-6 h-6" />
+                Technical Skills
+              </h3>
               <div className="space-y-6">
                 {skills.map((skill, index) => (
-                  <div key={index}>
+                  <div key={index} className="group">
                     <div className="flex justify-between mb-2">
-                      <span className="font-medium">{skill.name}</span>
-                      <span className="text-yellow-400">{skill.level}%</span>
+                      <span className="font-medium flex items-center gap-2">
+                        <span className="text-xl">{skill.icon}</span>
+                        {skill.name}
+                      </span>
+                      <span className="text-cyan-400 font-bold">{skill.level}%</span>
                     </div>
-                    <div className="w-full bg-slate-700 rounded-full h-2">
+                    <div className="w-full bg-slate-700 rounded-full h-3 overflow-hidden">
                       <div 
-                        className="bg-gradient-to-r from-yellow-400 to-orange-500 h-2 rounded-full transition-all duration-1000"
+                        className={`bg-gradient-to-r ${skill.color} h-3 rounded-full transition-all duration-1000 group-hover:animate-pulse`}
                         style={{ width: `${skill.level}%` }}
                       ></div>
                     </div>
@@ -285,19 +321,22 @@ const Index = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl font-semibold mb-8 text-yellow-400">Certifications</h3>
+              <h3 className="text-2xl font-semibold mb-8 text-purple-400 flex items-center gap-2">
+                <Badge className="w-6 h-6 bg-transparent p-0" />
+                Certifications
+              </h3>
               <div className="space-y-4">
                 {certifications.map((cert, index) => (
-                  <Card key={index} className="bg-slate-800 border-slate-700">
+                  <Card key={index} className="bg-slate-800/50 border-slate-700 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20">
                     <CardContent className="p-4">
                       <div className="flex items-center space-x-4">
-                        <div className={`w-12 h-12 ${cert.color} rounded-lg flex items-center justify-center text-white font-bold`}>
-                          {cert.issuer.charAt(0)}
+                        <div className={`w-12 h-12 bg-gradient-to-br ${cert.gradient} rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg`}>
+                          {cert.icon}
                         </div>
                         <div className="flex-1">
                           <h4 className="font-semibold text-white">{cert.title}</h4>
                           <p className="text-gray-400 text-sm">{cert.issuer}</p>
-                          <Badge variant="secondary" className="mt-1 text-yellow-400 bg-yellow-400/10">
+                          <Badge className={`mt-1 bg-gradient-to-r ${cert.gradient} text-white border-0`}>
                             {cert.achievement}
                           </Badge>
                         </div>
@@ -312,18 +351,19 @@ const Index = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 bg-slate-800/50">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center">Featured Project</h2>
+      <section id="projects" className="py-20 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900/20 to-blue-900/20"></div>
+        <div className="container mx-auto relative z-10">
+          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Featured Project</h2>
           
-          <Card className="bg-slate-800 border-slate-700 max-w-4xl mx-auto">
+          <Card className="bg-slate-800/50 border-slate-700 max-w-4xl mx-auto hover:border-green-400/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20">
             <CardHeader>
               <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-green-500 rounded-lg flex items-center justify-center text-2xl">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center text-2xl shadow-lg shadow-green-400/50 animate-pulse">
                   🌱
                 </div>
                 <div>
-                  <CardTitle className="text-2xl text-white">Plant Disease Detection</CardTitle>
+                  <CardTitle className="text-2xl text-white bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Plant Disease Detection</CardTitle>
                   <CardDescription className="text-gray-400">
                     AI-powered solution for early detection of plant diseases
                   </CardDescription>
@@ -338,18 +378,18 @@ const Index = () => {
               </p>
               
               <div className="flex flex-wrap gap-2">
-                <Badge className="bg-blue-500/20 text-blue-400">Python</Badge>
-                <Badge className="bg-green-500/20 text-green-400">Machine Learning</Badge>
-                <Badge className="bg-purple-500/20 text-purple-400">Computer Vision</Badge>
-                <Badge className="bg-orange-500/20 text-orange-400">Data Analytics</Badge>
+                <Badge className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-0 hover:scale-105 transition-transform">Python</Badge>
+                <Badge className="bg-gradient-to-r from-green-500 to-green-600 text-white border-0 hover:scale-105 transition-transform">Machine Learning</Badge>
+                <Badge className="bg-gradient-to-r from-purple-500 to-purple-600 text-white border-0 hover:scale-105 transition-transform">Computer Vision</Badge>
+                <Badge className="bg-gradient-to-r from-orange-500 to-orange-600 text-white border-0 hover:scale-105 transition-transform">Data Analytics</Badge>
               </div>
 
               <div className="flex space-x-4">
-                <Button variant="outline" className="border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black">
-                  <ExternalLink className="w-4 h-4 mr-2" />
+                <Button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white border-0 group transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/50">
+                  <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
                   View Demo
                 </Button>
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-600">
+                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-600 hover:scale-105 transition-all duration-300">
                   <Github className="w-4 h-4 mr-2" />
                   Source Code
                 </Button>
@@ -362,13 +402,15 @@ const Index = () => {
       {/* Achievements Section */}
       <section id="achievements" className="py-20 px-6">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-center">Achievements & Extracurriculars</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Achievements & Extracurriculars</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {achievements.map((achievement, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700 text-center">
+              <Card key={index} className="bg-slate-800/50 border-slate-700 text-center hover:border-yellow-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/20 group">
                 <CardContent className="p-6">
-                  <div className="text-4xl mb-4">{achievement.icon}</div>
+                  <div className={`text-4xl mb-4 inline-block p-3 rounded-full bg-gradient-to-br ${achievement.gradient} shadow-lg group-hover:animate-bounce`}>
+                    {achievement.icon}
+                  </div>
                   <h3 className="font-bold text-yellow-400 mb-2">{achievement.title}</h3>
                   <p className="text-white font-medium mb-1">{achievement.event}</p>
                   <p className="text-gray-400 text-sm">{achievement.category}</p>
@@ -378,28 +420,28 @@ const Index = () => {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
-            <Card className="bg-gradient-to-br from-yellow-400 to-orange-500 text-black">
+            <Card className="bg-gradient-to-br from-yellow-400/20 to-orange-500/20 border-yellow-400/50 text-black hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-400/30">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl mb-4">💼</div>
-                <h3 className="font-bold text-lg mb-2">Project Intern</h3>
-                <p className="font-medium">Edunet Foundation</p>
-                <p className="text-sm opacity-80">Real-world AI & Data Science Projects</p>
+                <div className="text-3xl mb-4 animate-bounce">💼</div>
+                <h3 className="font-bold text-lg mb-2 text-yellow-400">Project Intern</h3>
+                <p className="font-medium text-white">Edunet Foundation</p>
+                <p className="text-sm text-gray-300">Real-world AI & Data Science Projects</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+            <Card className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 border-blue-400/50 text-white hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-400/30">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl mb-4">🎭</div>
-                <h3 className="font-bold text-lg mb-2">Club Member</h3>
+                <div className="text-3xl mb-4 animate-pulse">🎭</div>
+                <h3 className="font-bold text-lg mb-2 text-blue-400">Club Member</h3>
                 <p className="font-medium">KALADHARANI</p>
                 <p className="text-sm opacity-80">Cultural Club of Yuva Pragnan</p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-green-500 to-teal-600 text-white">
+            <Card className="bg-gradient-to-br from-green-500/20 to-teal-600/20 border-green-400/50 text-white hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-green-400/30">
               <CardContent className="p-6 text-center">
-                <div className="text-3xl mb-4">🤝</div>
-                <h3 className="font-bold text-lg mb-2">NSS Volunteer</h3>
+                <div className="text-3xl mb-4 animate-spin-slow">🤝</div>
+                <h3 className="font-bold text-lg mb-2 text-green-400">NSS Volunteer</h3>
                 <p className="font-medium">Community Service</p>
                 <p className="text-sm opacity-80">Social Initiatives & Leadership</p>
               </CardContent>
@@ -409,10 +451,11 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-slate-800/50">
-        <div className="container mx-auto max-w-4xl">
+      <section id="contact" className="py-20 px-6 relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/20 to-purple-900/20"></div>
+        <div className="container mx-auto max-w-4xl relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Let's Connect</h2>
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Let's Connect</h2>
             <p className="text-gray-400 text-lg">
               Ready to collaborate on innovative projects or discuss opportunities? Let's create something amazing together.
             </p>
@@ -421,22 +464,22 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-12">
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-semibold mb-6 text-yellow-400">Get In Touch</h3>
+                <h3 className="text-2xl font-semibold mb-6 text-cyan-400">Get In Touch</h3>
                 <div className="space-y-4">
-                  <div className="flex items-center space-x-4">
-                    <Mail className="h-6 w-6 text-yellow-400" />
+                  <div className="flex items-center space-x-4 p-3 bg-gradient-to-r from-cyan-500/10 to-transparent rounded-lg hover:from-cyan-500/20 transition-all duration-300">
+                    <Mail className="h-6 w-6 text-cyan-400" />
                     <div>
                       <p className="font-medium">Email</p>
-                      <a href="mailto:bharathchilaka01@gmail.com" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                      <a href="mailto:bharathchilaka01@gmail.com" className="text-gray-400 hover:text-cyan-400 transition-colors">
                         bharathchilaka01@gmail.com
                       </a>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-4">
-                    <Phone className="h-6 w-6 text-yellow-400" />
+                  <div className="flex items-center space-x-4 p-3 bg-gradient-to-r from-purple-500/10 to-transparent rounded-lg hover:from-purple-500/20 transition-all duration-300">
+                    <Phone className="h-6 w-6 text-purple-400" />
                     <div>
                       <p className="font-medium">Phone</p>
-                      <a href="tel:+918367755747" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                      <a href="tel:+918367755747" className="text-gray-400 hover:text-purple-400 transition-colors">
                         +91 8367755747
                       </a>
                     </div>
@@ -445,38 +488,38 @@ const Index = () => {
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold mb-4">Services I Offer</h4>
+                <h4 className="text-lg font-semibold mb-4 text-purple-400">Services I Offer</h4>
                 <ul className="space-y-2 text-gray-300">
-                  <li>• Data Science & Analytics Consulting</li>
-                  <li>• AI & Machine Learning Solutions</li>
-                  <li>• Web & App Development</li>
-                  <li>• Tech Content Creation</li>
-                  <li>• Innovation Collaboration</li>
+                  <li className="flex items-center gap-2"><span className="text-cyan-400">•</span> Data Science & Analytics Consulting</li>
+                  <li className="flex items-center gap-2"><span className="text-purple-400">•</span> AI & Machine Learning Solutions</li>
+                  <li className="flex items-center gap-2"><span className="text-green-400">•</span> Web & App Development</li>
+                  <li className="flex items-center gap-2"><span className="text-yellow-400">•</span> Tech Content Creation</li>
+                  <li className="flex items-center gap-2"><span className="text-pink-400">•</span> Innovation Collaboration</li>
                 </ul>
               </div>
             </div>
 
             <div className="space-y-6">
-              <Card className="bg-slate-800 border-slate-700">
+              <Card className="bg-slate-800/50 border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20">
                 <CardContent className="p-6">
-                  <h4 className="font-semibold mb-4">Quick Contact</h4>
+                  <h4 className="font-semibold mb-4 text-cyan-400">Quick Contact</h4>
                   <div className="space-y-4">
                     <input 
                       type="text" 
                       placeholder="Your Name" 
-                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none"
+                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
                     />
                     <input 
                       type="email" 
                       placeholder="Your Email" 
-                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none"
+                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
                     />
                     <textarea 
                       placeholder="Your Message" 
                       rows={4}
-                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-yellow-400 focus:outline-none resize-none"
+                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 resize-none transition-all duration-300"
                     ></textarea>
-                    <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium">
+                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50">
                       Send Message
                     </Button>
                   </div>
@@ -485,15 +528,15 @@ const Index = () => {
 
               <div className="flex justify-center space-x-6">
                 <a href="https://github.com/Bobby-111" target="_blank" rel="noopener noreferrer" 
-                   className="text-gray-400 hover:text-yellow-400 transition-colors">
+                   className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/50 p-3 rounded-lg">
                   <Github className="h-8 w-8" />
                 </a>
                 <a href="https://linkedin.com/in/bharath-chilaka" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-yellow-400 transition-colors">
+                   className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-400/50 p-3 rounded-lg">
                   <Linkedin className="h-8 w-8" />
                 </a>
                 <a href="https://youtube.com/@bharath.chilaka01" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-yellow-400 transition-colors">
+                   className="text-gray-400 hover:text-red-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-red-400/50 p-3 rounded-lg">
                   <Youtube className="h-8 w-8" />
                 </a>
               </div>
@@ -503,10 +546,11 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-slate-800">
+      <footer className="py-8 px-6 border-t border-purple-500/30 bg-gradient-to-r from-slate-900 to-purple-900/50">
         <div className="container mx-auto text-center">
           <p className="text-gray-400">
-            © 2025 Bharath Chilaka. Crafted with passion and innovation.
+            © 2025 Bharath Chilaka. Crafted with passion and innovation. 
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"> ✨</span>
           </p>
         </div>
       </footer>
