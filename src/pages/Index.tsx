@@ -404,8 +404,8 @@ const Index = () => {
               <CardContent className="p-6 text-center">
                 <div className="text-3xl mb-4 animate-bounce">💼</div>
                 <h3 className="font-bold text-lg mb-2 text-yellow-400">Project Intern</h3>
-                <p className="font-medium text-white">Edunet Foundation</p>
-                <p className="text-sm text-gray-300">Real-world AI & Data Science Projects</p>
+                <p className="font-medium text-zinc-950">Edunet Foundation</p>
+                <p className="text-sm text-slate-700">Real-world AI & Data Science Projects</p>
               </CardContent>
             </Card>
 
@@ -413,8 +413,8 @@ const Index = () => {
               <CardContent className="p-6 text-center">
                 <div className="text-3xl mb-4 animate-pulse">🎭</div>
                 <h3 className="font-bold text-lg mb-2 text-blue-400">Club Member</h3>
-                <p className="font-medium">KALADHARANI</p>
-                <p className="text-sm opacity-80">Cultural Club of Yuva Pragnan</p>
+                <p className="font-medium text-gray-950">KALADHARANI</p>
+                <p className="text-sm opacity-80 text-zinc-900">Cultural Club of Yuva Pragnan</p>
               </CardContent>
             </Card>
 
@@ -422,8 +422,8 @@ const Index = () => {
               <CardContent className="p-6 text-center">
                 <div className="text-3xl mb-4 animate-spin-slow">🤝</div>
                 <h3 className="font-bold text-lg mb-2 text-green-400">NSS Volunteer</h3>
-                <p className="font-medium">Community Service</p>
-                <p className="text-sm opacity-80">Social Initiatives & Leadership</p>
+                <p className="font-medium text-slate-950">Community Service</p>
+                <p className="opacity-80 text-sm text-gray-800">Social Initiatives & Leadership</p>
               </CardContent>
             </Card>
           </div>
