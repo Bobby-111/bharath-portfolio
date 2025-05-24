@@ -1,24 +1,19 @@
-
 import { useState, useEffect } from "react";
 import { ArrowRight, Github, Linkedin, Youtube, Mail, Phone, Download, ExternalLink, Zap, Code2, Brain, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
-
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "skills", "projects", "achievements", "contact"];
       const scrollPosition = window.scrollY + 100;
-
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
-          
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
             setActiveSection(section);
             break;
@@ -26,91 +21,99 @@ const Index = () => {
         }
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({
+        behavior: "smooth"
+      });
     }
   };
-
-  const skills = [
-    { name: "Data Science & Analytics", level: 95, icon: "📊", color: "from-cyan-400 to-blue-500" },
-    { name: "Machine Learning & AI", level: 90, icon: "🤖", color: "from-purple-400 to-pink-500" },
-    { name: "Python Programming", level: 92, icon: "🐍", color: "from-green-400 to-emerald-500" },
-    { name: "Java Programming", level: 85, icon: "☕", color: "from-orange-400 to-red-500" },
-    { name: "Cybersecurity", level: 80, icon: "🛡️", color: "from-red-400 to-rose-500" },
-    { name: "Data Visualization", level: 88, icon: "📈", color: "from-yellow-400 to-orange-500" }
-  ];
-
-  const certifications = [
-    {
-      title: "Python for Data Science",
-      issuer: "IIT Madras",
-      achievement: "Silver Medal (88.8%)",
-      gradient: "from-yellow-400 to-orange-500",
-      icon: "🏅"
-    },
-    {
-      title: "Introduction to Generative AI",
-      issuer: "IBM",
-      achievement: "Certified",
-      gradient: "from-blue-400 to-blue-600",
-      icon: "🤖"
-    },
-    {
-      title: "Cybersecurity Essentials",
-      issuer: "IBM",
-      achievement: "Certified",
-      gradient: "from-red-400 to-red-600",
-      icon: "🔒"
-    },
-    {
-      title: "AI For Everyone",
-      issuer: "DeepLearning.AI",
-      achievement: "Certified",
-      gradient: "from-green-400 to-green-600",
-      icon: "🧠"
-    }
-  ];
-
-  const achievements = [
-    {
-      title: "1st Place",
-      event: "District Level Youth Festival",
-      category: "Dance",
-      icon: "🏆",
-      gradient: "from-yellow-400 to-orange-500"
-    },
-    {
-      title: "2nd Prize",
-      event: "District Level Yuva Utsav",
-      category: "Dance",
-      icon: "🥈",
-      gradient: "from-gray-300 to-gray-500"
-    },
-    {
-      title: "Winner",
-      event: "QIS Fest 2025",
-      category: "Dance",
-      icon: "🏆",
-      gradient: "from-purple-400 to-pink-500"
-    },
-    {
-      title: "Runner-up",
-      event: "Aditya Colours",
-      category: "Dance",
-      icon: "🥉",
-      gradient: "from-amber-400 to-yellow-500"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
+  const skills = [{
+    name: "Data Science & Analytics",
+    level: 95,
+    icon: "📊",
+    color: "from-cyan-400 to-blue-500"
+  }, {
+    name: "Machine Learning & AI",
+    level: 90,
+    icon: "🤖",
+    color: "from-purple-400 to-pink-500"
+  }, {
+    name: "Python Programming",
+    level: 92,
+    icon: "🐍",
+    color: "from-green-400 to-emerald-500"
+  }, {
+    name: "Java Programming",
+    level: 85,
+    icon: "☕",
+    color: "from-orange-400 to-red-500"
+  }, {
+    name: "Cybersecurity",
+    level: 80,
+    icon: "🛡️",
+    color: "from-red-400 to-rose-500"
+  }, {
+    name: "Data Visualization",
+    level: 88,
+    icon: "📈",
+    color: "from-yellow-400 to-orange-500"
+  }];
+  const certifications = [{
+    title: "Python for Data Science",
+    issuer: "IIT Madras",
+    achievement: "Silver Medal (88.8%)",
+    gradient: "from-yellow-400 to-orange-500",
+    icon: "🏅"
+  }, {
+    title: "Introduction to Generative AI",
+    issuer: "IBM",
+    achievement: "Certified",
+    gradient: "from-blue-400 to-blue-600",
+    icon: "🤖"
+  }, {
+    title: "Cybersecurity Essentials",
+    issuer: "IBM",
+    achievement: "Certified",
+    gradient: "from-red-400 to-red-600",
+    icon: "🔒"
+  }, {
+    title: "AI For Everyone",
+    issuer: "DeepLearning.AI",
+    achievement: "Certified",
+    gradient: "from-green-400 to-green-600",
+    icon: "🧠"
+  }];
+  const achievements = [{
+    title: "1st Place",
+    event: "District Level Youth Festival",
+    category: "Dance",
+    icon: "🏆",
+    gradient: "from-yellow-400 to-orange-500"
+  }, {
+    title: "2nd Prize",
+    event: "District Level Yuva Utsav",
+    category: "Dance",
+    icon: "🥈",
+    gradient: "from-gray-300 to-gray-500"
+  }, {
+    title: "Winner",
+    event: "QIS Fest 2025",
+    category: "Dance",
+    icon: "🏆",
+    gradient: "from-purple-400 to-pink-500"
+  }, {
+    title: "Runner-up",
+    event: "Aditya Colours",
+    category: "Dance",
+    icon: "🥉",
+    gradient: "from-amber-400 to-yellow-500"
+  }];
+  return <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-10 left-10 w-20 h-20 bg-cyan-400/20 rounded-full blur-xl animate-pulse"></div>
@@ -127,20 +130,10 @@ const Index = () => {
               Bharath Chilaka
             </div>
             <div className="hidden md:flex space-x-8">
-              {["Home", "About", "Skills", "Projects", "Achievements", "Contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`text-sm font-medium transition-all duration-300 relative group ${
-                    activeSection === item.toLowerCase()
-                      ? "text-cyan-400"
-                      : "text-gray-300 hover:text-white"
-                  }`}
-                >
+              {["Home", "About", "Skills", "Projects", "Achievements", "Contact"].map(item => <button key={item} onClick={() => scrollToSection(item.toLowerCase())} className={`text-sm font-medium transition-all duration-300 relative group ${activeSection === item.toLowerCase() ? "text-cyan-400" : "text-gray-300 hover:text-white"}`}>
                   {item}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-400 group-hover:w-full transition-all duration-300"></span>
-                </button>
-              ))}
+                </button>)}
             </div>
           </div>
         </div>
@@ -175,10 +168,7 @@ const Index = () => {
                   Passionate about AI, machine learning, and creating solutions that make a difference.
                 </p>
                 
-                <Button 
-                  onClick={() => scrollToSection("about")}
-                  className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium px-6 py-3 rounded-lg group transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50"
-                >
+                <Button onClick={() => scrollToSection("about")} className="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium px-6 py-3 rounded-lg group transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50">
                   <Brain className="mr-2 h-4 w-4" />
                   My story
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -186,16 +176,13 @@ const Index = () => {
               </div>
 
               <div className="flex space-x-4 pt-4">
-                <a href="https://github.com/Bobby-111" target="_blank" rel="noopener noreferrer" 
-                   className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/50 p-2 rounded-lg">
+                <a href="https://github.com/Bobby-111" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/50 p-2 rounded-lg">
                   <Github className="h-6 w-6" />
                 </a>
-                <a href="https://linkedin.com/in/bharath-chilaka" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-400/50 p-2 rounded-lg">
+                <a href="https://linkedin.com/in/bharath-chilaka" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-400/50 p-2 rounded-lg">
                   <Linkedin className="h-6 w-6" />
                 </a>
-                <a href="https://youtube.com/@bharath.chilaka01" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-red-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-red-400/50 p-2 rounded-lg">
+                <a href="https://youtube.com/@bharath.chilaka01" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-red-400/50 p-2 rounded-lg">
                   <Youtube className="h-6 w-6" />
                 </a>
               </div>
@@ -206,11 +193,7 @@ const Index = () => {
                 <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 p-1 animate-spin-slow">
                   <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-purple-500/20 animate-pulse"></div>
-                    <img 
-                      src="/lovable-uploads/d9b3b480-bc36-4884-b4c2-f459b24a08eb.png" 
-                      alt="Bharath Chilaka"
-                      className="w-full h-full object-cover rounded-full relative z-10"
-                    />
+                    <img src="/lovable-uploads/d9b3b480-bc36-4884-b4c2-f459b24a08eb.png" alt="Bharath Chilaka" className="w-full h-full object-cover rounded-full relative z-10" />
                   </div>
                 </div>
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center text-2xl animate-bounce shadow-lg shadow-yellow-400/50">
@@ -271,7 +254,7 @@ const Index = () => {
 
               <div className="grid grid-cols-2 gap-4 pt-6">
                 <div className="text-center p-4 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-lg border border-cyan-400/30">
-                  <div className="text-3xl font-bold text-cyan-400">3+</div>
+                  <div className="text-3xl font-bold text-cyan-400">2+</div>
                   <div className="text-sm text-gray-400">Years of Experience</div>
                 </div>
                 <div className="text-center p-4 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-lg border border-purple-400/30">
@@ -304,8 +287,7 @@ const Index = () => {
                 Technical Skills
               </h3>
               <div className="space-y-6">
-                {skills.map((skill, index) => (
-                  <div key={index} className="group">
+                {skills.map((skill, index) => <div key={index} className="group">
                     <div className="flex justify-between mb-2">
                       <span className="font-medium flex items-center gap-2">
                         <span className="text-xl">{skill.icon}</span>
@@ -314,13 +296,11 @@ const Index = () => {
                       <span className="text-cyan-400 font-bold">{skill.level}%</span>
                     </div>
                     <div className="w-full bg-slate-700 rounded-full h-3 overflow-hidden">
-                      <div 
-                        className={`bg-gradient-to-r ${skill.color} h-3 rounded-full transition-all duration-1000 group-hover:animate-pulse`}
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
+                      <div className={`bg-gradient-to-r ${skill.color} h-3 rounded-full transition-all duration-1000 group-hover:animate-pulse`} style={{
+                    width: `${skill.level}%`
+                  }}></div>
                     </div>
-                  </div>
-                ))}
+                  </div>)}
               </div>
             </div>
 
@@ -330,8 +310,7 @@ const Index = () => {
                 Certifications
               </h3>
               <div className="space-y-4">
-                {certifications.map((cert, index) => (
-                  <Card key={index} className="bg-slate-800/50 border-slate-700 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20">
+                {certifications.map((cert, index) => <Card key={index} className="bg-slate-800/50 border-slate-700 hover:border-purple-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20">
                     <CardContent className="p-4">
                       <div className="flex items-center space-x-4">
                         <div className={`w-12 h-12 bg-gradient-to-br ${cert.gradient} rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg`}>
@@ -346,8 +325,7 @@ const Index = () => {
                         </div>
                       </div>
                     </CardContent>
-                  </Card>
-                ))}
+                  </Card>)}
               </div>
             </div>
           </div>
@@ -409,8 +387,7 @@ const Index = () => {
           <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Achievements & Extracurriculars</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {achievements.map((achievement, index) => (
-              <Card key={index} className="bg-slate-800/50 border-slate-700 text-center hover:border-yellow-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/20 group">
+            {achievements.map((achievement, index) => <Card key={index} className="bg-slate-800/50 border-slate-700 text-center hover:border-yellow-400/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/20 group">
                 <CardContent className="p-6">
                   <div className={`text-4xl mb-4 inline-block p-3 rounded-full bg-gradient-to-br ${achievement.gradient} shadow-lg group-hover:animate-bounce`}>
                     {achievement.icon}
@@ -419,8 +396,7 @@ const Index = () => {
                   <p className="text-white font-medium mb-1">{achievement.event}</p>
                   <p className="text-gray-400 text-sm">{achievement.category}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">
@@ -508,21 +484,9 @@ const Index = () => {
                 <CardContent className="p-6">
                   <h4 className="font-semibold mb-4 text-cyan-400">Quick Contact</h4>
                   <div className="space-y-4">
-                    <input 
-                      type="text" 
-                      placeholder="Your Name" 
-                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
-                    />
-                    <input 
-                      type="email" 
-                      placeholder="Your Email" 
-                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
-                    />
-                    <textarea 
-                      placeholder="Your Message" 
-                      rows={4}
-                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 resize-none transition-all duration-300"
-                    ></textarea>
+                    <input type="text" placeholder="Your Name" className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300" />
+                    <input type="email" placeholder="Your Email" className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300" />
+                    <textarea placeholder="Your Message" rows={4} className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 resize-none transition-all duration-300"></textarea>
                     <Button className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50">
                       Send Message
                     </Button>
@@ -531,16 +495,13 @@ const Index = () => {
               </Card>
 
               <div className="flex justify-center space-x-6">
-                <a href="https://github.com/Bobby-111" target="_blank" rel="noopener noreferrer" 
-                   className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/50 p-3 rounded-lg">
+                <a href="https://github.com/Bobby-111" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-400/50 p-3 rounded-lg">
                   <Github className="h-8 w-8" />
                 </a>
-                <a href="https://linkedin.com/in/bharath-chilaka" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-400/50 p-3 rounded-lg">
+                <a href="https://linkedin.com/in/bharath-chilaka" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-400/50 p-3 rounded-lg">
                   <Linkedin className="h-8 w-8" />
                 </a>
-                <a href="https://youtube.com/@bharath.chilaka01" target="_blank" rel="noopener noreferrer"
-                   className="text-gray-400 hover:text-red-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-red-400/50 p-3 rounded-lg">
+                <a href="https://youtube.com/@bharath.chilaka01" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-red-400 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-red-400/50 p-3 rounded-lg">
                   <Youtube className="h-8 w-8" />
                 </a>
               </div>
@@ -558,8 +519,6 @@ const Index = () => {
           </p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
