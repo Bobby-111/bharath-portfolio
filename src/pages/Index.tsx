@@ -204,9 +204,13 @@ const Index = () => {
             <div className="lg:justify-self-end">
               <div className="relative">
                 <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 p-1 animate-spin-slow">
-                  <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center text-6xl relative overflow-hidden">
+                  <div className="w-full h-full rounded-full bg-slate-800 flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-purple-500/20 animate-pulse"></div>
-                    <span className="relative z-10">👨‍💻</span>
+                    <img 
+                      src="/lovable-uploads/d9b3b480-bc36-4884-b4c2-f459b24a08eb.png" 
+                      alt="Bharath Chilaka"
+                      className="w-full h-full object-cover rounded-full relative z-10"
+                    />
                   </div>
                 </div>
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center text-2xl animate-bounce shadow-lg shadow-yellow-400/50">
