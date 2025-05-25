@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { ArrowRight, Github, Linkedin, Youtube, Mail, Phone, Download, ExternalLink, Zap, Code2, Brain, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -58,17 +59,26 @@ const Index = () => {
     setIsSubmitting(true);
 
     try {
+      console.log('Sending email with data:', formData);
+      
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: 'Bharath Chilaka',
+        to_email: 'bharathchilaka01@gmail.com', // Added missing recipient email
+      };
+
+      console.log('Template params:', templateParams);
+
       const result = await emailjs.send(
         'service_600fydo', // Service ID
         'template_8vhw0ab', // Template ID
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_name: 'Bharath Chilaka',
-        },
+        templateParams,
         'tT67xeDfcZscCXc8g' // Public Key
       );
+
+      console.log('EmailJS result:', result);
 
       if (result.status === 200) {
         toast({
@@ -78,10 +88,23 @@ const Index = () => {
         setFormData({ name: '', email: '', message: '' });
       }
     } catch (error) {
-      console.error('EmailJS Error:', error);
+      console.error('EmailJS Error details:', error);
+      
+      // More specific error handling
+      let errorMessage = "Something went wrong. Please try again or contact me directly.";
+      
+      if (error instanceof Error) {
+        console.error('Error message:', error.message);
+        if (error.message.includes('recipients')) {
+          errorMessage = "Email configuration error. Please contact me directly.";
+        } else if (error.message.includes('network')) {
+          errorMessage = "Network error. Please check your connection and try again.";
+        }
+      }
+      
       toast({
         title: "Message Failed to Send",
-        description: "Something went wrong. Please try again or contact me directly.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
