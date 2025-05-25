@@ -3,8 +3,19 @@ import { ArrowRight, Github, Linkedin, Youtube, Mail, Phone, Download, ExternalL
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
+
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const { toast } = useToast();
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "skills", "projects", "achievements", "contact"];
@@ -24,6 +35,7 @@ const Index = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -32,6 +44,51 @@ const Index = () => {
       });
     }
   };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const result = await emailjs.send(
+        'service_600fydo', // Service ID
+        'template_8vhw0ab', // Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Bharath Chilaka',
+        },
+        'tT67xeDfcZscCXc8g' // Public Key
+      );
+
+      if (result.status === 200) {
+        toast({
+          title: "Message Sent Successfully! 🎉",
+          description: "Thank you for reaching out. I'll get back to you soon!",
+        });
+        setFormData({ name: '', email: '', message: '' });
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "Message Failed to Send",
+        description: "Something went wrong. Please try again or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const skills = [{
     name: "Data Science & Analytics",
     level: 95,
@@ -113,6 +170,7 @@ const Index = () => {
     icon: "🥉",
     gradient: "from-amber-400 to-yellow-500"
   }];
+  
   return <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-x-hidden">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 pointer-events-none">
@@ -483,14 +541,42 @@ const Index = () => {
               <Card className="bg-slate-800/50 border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20">
                 <CardContent className="p-6">
                   <h4 className="font-semibold mb-4 text-cyan-400">Quick Contact</h4>
-                  <div className="space-y-4">
-                    <input type="text" placeholder="Your Name" className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300" />
-                    <input type="email" placeholder="Your Email" className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300" />
-                    <textarea placeholder="Your Message" rows={4} className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 resize-none transition-all duration-300"></textarea>
-                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50">
-                      Send Message
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <input 
+                      type="text" 
+                      name="name"
+                      placeholder="Your Name" 
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300" 
+                    />
+                    <input 
+                      type="email" 
+                      name="email"
+                      placeholder="Your Email" 
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300" 
+                    />
+                    <textarea 
+                      name="message"
+                      placeholder="Your Message" 
+                      rows={4} 
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/20 resize-none transition-all duration-300"
+                    ></textarea>
+                    <Button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
-                  </div>
+                  </form>
                 </CardContent>
               </Card>
 
