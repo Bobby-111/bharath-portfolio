@@ -1,4 +1,5 @@
 
+
 import { useState, useEffect } from "react";
 import { ArrowRight, Github, Linkedin, Youtube, Mail, Phone, Download, ExternalLink, Zap, Code2, Brain, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -66,16 +67,16 @@ const Index = () => {
         from_email: formData.email,
         message: formData.message,
         to_name: 'Bharath Chilaka',
-        to_email: 'bharathchilaka01@gmail.com', // Added missing recipient email
+        to_email: 'bharathchilaka01@gmail.com',
       };
 
       console.log('Template params:', templateParams);
 
       const result = await emailjs.send(
-        'service_600fydo', // Service ID
-        'template_8vhw0ab', // Template ID
+        'service_uyfwn8h', // Updated Service ID
+        'template_x1kwbmt', // Updated Template ID
         templateParams,
-        'tT67xeDfcZscCXc8g' // Public Key
+        'kuHIZGFTN1Qgg1aNP' // Updated Public Key
       );
 
       console.log('EmailJS result:', result);
@@ -631,3 +632,4 @@ const Index = () => {
     </div>;
 };
 export default Index;
+
