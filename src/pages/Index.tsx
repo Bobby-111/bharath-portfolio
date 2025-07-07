@@ -430,48 +430,95 @@ const Index = () => {
       <section id="projects" className="py-20 px-6 relative">
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/20 to-blue-900/20"></div>
         <div className="container mx-auto relative z-10">
-          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Featured Project</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">Featured Projects</h2>
           
-          <Card className="bg-slate-800/50 border-slate-700 max-w-4xl mx-auto hover:border-green-400/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20">
-            <CardHeader>
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center text-2xl shadow-lg shadow-green-400/50 animate-pulse">
-                  🌱
+          <div className="grid lg:grid-cols-2 gap-8">
+            <Card className="bg-slate-800/50 border-slate-700 hover:border-green-400/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20">
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center text-2xl shadow-lg shadow-green-400/50 animate-pulse">
+                    🌱
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-white bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Plant Disease Detection</CardTitle>
+                    <CardDescription className="text-gray-400">
+                      AI-powered solution for early detection of plant diseases
+                    </CardDescription>
+                  </div>
                 </div>
-                <div>
-                  <CardTitle className="text-2xl text-white bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Plant Disease Detection</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    AI-powered solution for early detection of plant diseases
-                  </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <p className="text-gray-300">
+                  Developed an innovative AI-powered solution for early detection of plant diseases using advanced 
+                  image recognition and machine learning techniques. This project contributes to sustainable agriculture 
+                  and food security by enabling farmers to identify and treat plant diseases before they spread.
+                </p>
+                
+                <div className="flex flex-wrap gap-2">
+                  <Badge className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-0 hover:scale-105 transition-transform">Python</Badge>
+                  <Badge className="bg-gradient-to-r from-green-500 to-green-600 text-white border-0 hover:scale-105 transition-transform">Machine Learning</Badge>
+                  <Badge className="bg-gradient-to-r from-purple-500 to-purple-600 text-white border-0 hover:scale-105 transition-transform">Computer Vision</Badge>
+                  <Badge className="bg-gradient-to-r from-orange-500 to-orange-600 text-white border-0 hover:scale-105 transition-transform">Data Analytics</Badge>
                 </div>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <p className="text-gray-300">
-                Developed an innovative AI-powered solution for early detection of plant diseases using advanced 
-                image recognition and machine learning techniques. This project contributes to sustainable agriculture 
-                and food security by enabling farmers to identify and treat plant diseases before they spread.
-              </p>
-              
-              <div className="flex flex-wrap gap-2">
-                <Badge className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-0 hover:scale-105 transition-transform">Python</Badge>
-                <Badge className="bg-gradient-to-r from-green-500 to-green-600 text-white border-0 hover:scale-105 transition-transform">Machine Learning</Badge>
-                <Badge className="bg-gradient-to-r from-purple-500 to-purple-600 text-white border-0 hover:scale-105 transition-transform">Computer Vision</Badge>
-                <Badge className="bg-gradient-to-r from-orange-500 to-orange-600 text-white border-0 hover:scale-105 transition-transform">Data Analytics</Badge>
-              </div>
 
-              <div className="flex space-x-4">
-                <Button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white border-0 group transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/50">
-                  <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-                  View Demo
-                </Button>
-                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-600 hover:scale-105 transition-all duration-300">
-                  <Github className="w-4 h-4 mr-2" />
-                  Source Code
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+                <div className="flex space-x-4">
+                  <Button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white border-0 group transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/50">
+                    <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                    View Demo
+                  </Button>
+                  <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-600 hover:scale-105 transition-all duration-300">
+                    <Github className="w-4 h-4 mr-2" />
+                    Source Code
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-slate-800/50 border-slate-700 hover:border-yellow-400/50 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/20">
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center text-2xl shadow-lg shadow-yellow-400/50 animate-pulse">
+                    🐔
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-white bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Poultry Disease Detection</CardTitle>
+                    <CardDescription className="text-gray-400">
+                      AI classification system for detecting poultry chicken diseases
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <p className="text-gray-300">
+                  Developed an AI-powered classification system that detects diseases in poultry chickens using 
+                  advanced machine learning techniques. This project helps poultry farmers identify health issues 
+                  early, improving livestock management and reducing economic losses in poultry farming.
+                </p>
+                
+                <div className="flex flex-wrap gap-2">
+                  <Badge className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-0 hover:scale-105 transition-transform">Python</Badge>
+                  <Badge className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white border-0 hover:scale-105 transition-transform">Deep Learning</Badge>
+                  <Badge className="bg-gradient-to-r from-purple-500 to-purple-600 text-white border-0 hover:scale-105 transition-transform">Classification</Badge>
+                  <Badge className="bg-gradient-to-r from-orange-500 to-orange-600 text-white border-0 hover:scale-105 transition-transform">Computer Vision</Badge>
+                </div>
+
+                <div className="flex space-x-4">
+                  <Button asChild className="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white border-0 group transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/50">
+                    <a href="https://huggingface.co/spaces/Bharathchilaka/poultry-infer-api" target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+                      View Demo
+                    </a>
+                  </Button>
+                  <Button variant="outline" asChild className="border-gray-600 text-gray-300 hover:bg-gray-600 hover:scale-105 transition-all duration-300">
+                    <a href="https://github.com/Hemanagu/Classification-Of-Poultry-Diseases.git" target="_blank" rel="noopener noreferrer">
+                      <Github className="w-4 h-4 mr-2" />
+                      Source Code
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
