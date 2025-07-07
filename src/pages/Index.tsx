@@ -146,28 +146,40 @@ const Index = () => {
   }];
   const certifications = [{
     title: "Python for Data Science",
-    issuer: "IIT Madras",
+    issuer: "NPTEL (IIT Madras)",
     achievement: "Silver Medal (88.8%)",
     gradient: "from-yellow-400 to-orange-500",
     icon: "🏅"
   }, {
-    title: "Introduction to Generative AI",
-    issuer: "IBM",
+    title: "Generative AI",
+    issuer: "IBM SkillsBuild",
     achievement: "Certified",
     gradient: "from-blue-400 to-blue-600",
     icon: "🤖"
   }, {
-    title: "Cybersecurity Essentials",
-    issuer: "IBM",
+    title: "Cybersecurity Basics",
+    issuer: "IBM SkillsBuild",
     achievement: "Certified",
     gradient: "from-red-400 to-red-600",
     icon: "🔒"
   }, {
-    title: "AI For Everyone",
-    issuer: "DeepLearning.AI",
+    title: "Java Programming",
+    issuer: "CodeforEDX",
     achievement: "Certified",
+    gradient: "from-orange-400 to-red-500",
+    icon: "☕"
+  }, {
+    title: "Infosys Springboard",
+    issuer: "Infosys",
+    achievement: "Certified in AI/ML modules",
+    gradient: "from-purple-400 to-pink-500",
+    icon: "🎯"
+  }, {
+    title: "IBM Digital Credentials",
+    issuer: "IBM",
+    achievement: "Credly Profile",
     gradient: "from-green-400 to-green-600",
-    icon: "🧠"
+    icon: "🏆"
   }];
   const achievements = [{
     title: "1st Place",
@@ -299,14 +311,14 @@ const Index = () => {
               <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">About Me</h2>
               <div className="space-y-4 text-gray-300">
                 <p>
-                  I'm a passionate Computer Science student at RGUKT IIIT Ongole with an outstanding academic record (GPA: 9.7). 
+                  I'm a highly motivated and innovation-driven Computer Science student at RGUKT IIIT Ongole with an outstanding academic record (GPA: 9.13). 
                   My journey in technology is complemented by a strong foundation in data science, earning a Silver Medal (88.8%) 
                   in Python for Data Science from IIT Madras.
                 </p>
                 <p>
-                  As a project intern at Edunet Foundation, I've gained valuable industry experience working on real-world 
-                  AI and data science projects. Beyond academics, I'm an active NSS volunteer and an official club member 
-                  of KALADHARANI (cultural club of Yuva Pragnan), showcasing my leadership and cultural engagement.
+                  As an AI/ML intern at Edunet Foundation and with experience in industrial training at Eduvarsity, I've gained valuable 
+                  industry experience working on real-world AI and data science projects. Beyond academics, I'm an active NSS volunteer, 
+                  official club member of KALADHARANI, and a skilled dancer with multiple competition wins.
                 </p>
                 <p>
                   My diverse interests span from developing AI solutions for agriculture to competitive dancing, 
@@ -321,15 +333,15 @@ const Index = () => {
                 <div className="space-y-4">
                   <div className="border-l-2 border-cyan-400 pl-4 bg-gradient-to-r from-cyan-400/10 to-transparent p-3 rounded-r-lg">
                     <h4 className="font-medium">B.Tech Computer Science & Engineering</h4>
-                    <p className="text-gray-400">RGUKT IIIT Ongole • Expected 2027 • GPA: 9.7</p>
+                    <p className="text-gray-400">RGUKT IIIT Ongole • 2023-Present • GPA: 9.13</p>
                   </div>
                   <div className="border-l-2 border-purple-400 pl-4 bg-gradient-to-r from-purple-400/10 to-transparent p-3 rounded-r-lg">
-                    <h4 className="font-medium">Pre-University Course</h4>
-                    <p className="text-gray-400">RGUKT IIIT Ongole • 2023 • GPA: 9.32</p>
+                    <h4 className="font-medium">Intermediate (12th)</h4>
+                    <p className="text-gray-400">RGUKT IIIT Ongole • 2021-2023 • GPA: 9.32</p>
                   </div>
                   <div className="border-l-2 border-green-400 pl-4 bg-gradient-to-r from-green-400/10 to-transparent p-3 rounded-r-lg">
-                    <h4 className="font-medium">Matriculation</h4>
-                    <p className="text-gray-400">Montessori EM School • 2021 • GPA: 10.0</p>
+                    <h4 className="font-medium">SSC (10th)</h4>
+                    <p className="text-gray-400">Montessori EM School • 2020-2021 • GPA: 10.0</p>
                   </div>
                 </div>
               </div>
@@ -485,9 +497,9 @@ const Index = () => {
             <Card className="bg-gradient-to-br from-yellow-400/20 to-orange-500/20 border-yellow-400/50 text-black hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-yellow-400/30">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl mb-4 animate-bounce">💼</div>
-                <h3 className="font-bold text-lg mb-2 text-yellow-400">Project Intern</h3>
+                <h3 className="font-bold text-lg mb-2 text-yellow-400">AI/ML Intern</h3>
                 <p className="font-medium text-zinc-950">Edunet Foundation</p>
-                <p className="text-sm text-slate-700">Real-world AI & Data Science Projects</p>
+                <p className="text-sm text-slate-700">Applied Data Science & Model Building</p>
               </CardContent>
             </Card>
 
