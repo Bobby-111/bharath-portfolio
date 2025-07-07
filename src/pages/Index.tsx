@@ -120,7 +120,7 @@ const Index = () => {
     color: "from-cyan-400 to-blue-500"
   }, {
     name: "Machine Learning & AI",
-    level: 90,
+    level: 95,
     icon: "🤖",
     color: "from-purple-400 to-pink-500"
   }, {
@@ -311,7 +311,7 @@ const Index = () => {
               <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">About Me</h2>
               <div className="space-y-4 text-gray-300">
                 <p>
-                  I'm a highly motivated and innovation-driven Computer Science student at RGUKT IIIT Ongole with an outstanding academic record (GPA: 9.13). 
+                  I'm a highly motivated and innovation-driven 3rd Year Computer Science student at RGUKT IIIT Ongole with an outstanding academic record (GPA: 9.73). 
                   My journey in technology is complemented by a strong foundation in data science, earning a Silver Medal (88.8%) 
                   in Python for Data Science from IIT Madras.
                 </p>
@@ -333,7 +333,7 @@ const Index = () => {
                 <div className="space-y-4">
                   <div className="border-l-2 border-cyan-400 pl-4 bg-gradient-to-r from-cyan-400/10 to-transparent p-3 rounded-r-lg">
                     <h4 className="font-medium">B.Tech Computer Science & Engineering</h4>
-                    <p className="text-gray-400">RGUKT IIIT Ongole • 2023-Present • GPA: 9.13</p>
+                    <p className="text-gray-400">RGUKT IIIT Ongole • 2023-Present • GPA: 9.73</p>
                   </div>
                   <div className="border-l-2 border-purple-400 pl-4 bg-gradient-to-r from-purple-400/10 to-transparent p-3 rounded-r-lg">
                     <h4 className="font-medium">Intermediate (12th)</h4>
